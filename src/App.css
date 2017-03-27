@@ -1,0 +1,13 @@
+.App{
+  text-align : center;
+  font-size : 35px;
+  margin : 20%;
+}
+
+.App-title{
+  font-size : 65px;
+}
+
+.App-day, .App-hour, .App-minute, .App-second{
+   display : inline;
+}
