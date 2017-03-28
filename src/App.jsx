@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './App.css'
+import Clock from './Clock.jsx';
 
 class App extends Component{
 
@@ -8,24 +9,18 @@ class App extends Component{
 
       this.state = {
         deadline : 'December 25, 2017',
-		day : 13,
-		hour : 5,
-		minute : 23,
-		second : 34
+		tempDeadline : "",
       }
 
   }
   
   changeState(){
+
       this.setState(
 	    {
-            deadline : 'December 25, 2018',
-		    day : 37,
-		    hour : 5,
-		    minute : 58,
-		    second : 23
+            deadline : this.state.tempDeadline
         }
-	  )
+	  );
   }
 
 
@@ -37,13 +32,8 @@ class App extends Component{
 
         <div className="App">
             <div className="App-title">CountDown to {this.state.deadline}</div>
-            <div>
-               <div className="App-day"> {this.state.day} days</div>
-               <div className="App-hour"> {this.state.hour} hours</div>
-               <div className="App-minute"> {this.state.minute} minutes</div>
-               <div className="App-second"> {this.state.second} seconds</div>
-            </div>
-            <input placeholder='comment'></input>
+            <Clock/>
+            <input onChange={event => this.setState({tempDeadline : event.target.value})}></input>
 
             <button onClick={()=>this.changeState()}>submit</button>
        </div>
