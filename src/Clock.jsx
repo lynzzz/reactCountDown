@@ -14,9 +14,30 @@ class Clock extends Component{
       }
     }
 
-
+	getUtility(deadline){
+	    var time=Date.parse(deadline) - Date.parse(new Date());
+		var second = Math.floor((time/1000)%60);
+		var minute = Math.floor((time/1000/60)%60);
+		var hour = Math.floor((time/1000/60/60)%24);
+        var day = Math.floor((time/1000/60/60/24));
+		
+	   this.setState({
+			day,
+            hour,
+            minute,
+            second			
+	   });
+	}
+	
+	componentWillMount(){
+	    this.getUtility(this.props.mydeadline);
+	}
+	
+	componentDidMount(){
+	   setInterval( () => this.getUtility(this.props.mydeadline), 1000);
+	}
+	
    render(){
-   
        return(
 	   
 	        <div>

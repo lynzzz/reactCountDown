@@ -32,7 +32,10 @@ class App extends Component{
 
         <div className="App">
             <div className="App-title">CountDown to {this.state.deadline}</div>
-            <Clock/>
+            <Clock
+			
+			   mydeadline = {this.state.deadline}
+			/>
             <input onChange={event => this.setState({tempDeadline : event.target.value})}></input>
 
             <button onClick={()=>this.changeState()}>submit</button>
